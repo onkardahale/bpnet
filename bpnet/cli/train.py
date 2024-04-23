@@ -192,7 +192,7 @@ def gin2dict(gin_config_str):
             break
         if track:
             macros.append(line)
-    gin_macro_dict = yaml.load("\n".join(macros).replace("@", "").replace(" = %", ": ").replace(" = ", ": "))
+    gin_macro_dict = yaml.safe_load("\n".join(macros).replace("@", "").replace(" = %", ": ").replace(" = ", ": "))
     lines = []
 
     for linei in gin_config_lines:
@@ -202,7 +202,7 @@ def gin2dict(gin_config_str):
         else:
             lines.append(linei)
 
-    gin_config_dict = yaml.load("\n".join(lines)
+    gin_config_dict = yaml.safe_load("\n".join(lines)
                                 .replace("@", "")
                                 .replace(" = %", ": ")
                                 .replace(" = ", ": "))
